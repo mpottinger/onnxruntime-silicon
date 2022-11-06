@@ -6,6 +6,8 @@ def test():
     print("running simple inference test...")
     example1 = get_example("sigmoid.onnx")
     sess = rt.InferenceSession(example1, providers=rt.get_available_providers())
+    # set provider to 'CoreMLExecutionProvider' to run on CoreML
+    sess.set_providers(['CoreMLExecutionProvider'])
 
     input_name = sess.get_inputs()[0].name
     print("input name", input_name)
